@@ -41,14 +41,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
-
-    public function redirectPath()
-        {
-            // Logic that determines where to send the user
-            if (Auth::user()->role == 'admin') {
-                return '/admin/dashboard';
-            }
-
-            return redirect()->intended($this->redirectPath());;
+//redirects user based on role
+     protected function authenticated($request, $user)
+    {
+        if($user->role === 'admin') {
+            return redirect()->intended('/admin/dashboard');
         }
+
+        return redirect()->intended('/home');
+    }
 }
