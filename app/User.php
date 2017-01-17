@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role'
     ];
 
     /**
@@ -28,13 +28,26 @@ class User extends Authenticatable
     ];
 
 
-
     public function events(){
-        return $this->hasMany(Event::class);
+        return $this->hasManyThrough('App\Event', 'App\Merchant');
     }
-    public function userevents()
+    public function merchant(){
+        return $this->hasOne(Merchant::class);
+    }
+   
+    public function transactions()
     {
-        return $this->hasMany(Userevent::class);   
+        return $this->hasMany(Transaction::class);   
     }
+    public static function boot()
+    {
+        parent::boot();    
     
+        // cause a delete of a product to cascade to children so they are also deleted
+        static::deleted(function($user)
+        {
+            $product->events()->delete();
+           
+        });
+    }    
 }

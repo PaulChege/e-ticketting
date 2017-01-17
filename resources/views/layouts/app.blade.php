@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'E-Ticketting') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -25,7 +25,7 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                     @include('errors.common')
+                     
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                         <span class="sr-only">Toggle Navigation</span>
@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'E-Ticketting') }}
                     </a>
                 </div>
 
@@ -69,6 +69,18 @@
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
+                                    </li>
+
+                                    <li>
+
+                                        @if (Auth::guest())
+                
+                                        @elseif (Auth::user()->role == 'merchant')
+                                        <a href="{{ url('/events') }}">My Events</a>
+                                  
+                                         @elseif (Auth::user()->role == 'customer')
+                                         <a href="{{ url('/events/tickets') }}">My Tickets</a>
+                                        @endif
                                     </li>
                                 </ul>
                             </li>

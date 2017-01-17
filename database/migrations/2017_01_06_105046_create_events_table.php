@@ -11,12 +11,12 @@ class CreateEventsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-                $table->integer('user_id')->unsigned()->index();
+            $table->integer('merchant_id')->unsigned()->index();
             $table->string('name');
+            $table->string('imagepath');
           
             $table->timestamps();
         });
@@ -27,8 +27,7 @@ class CreateEventsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('events');
     }
 }
