@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
-
+use App\Notifications\NewUser;
+use Notification;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,12 @@ class AdminController extends Controller
     public function create_admin(Request $request){
         return view('admin.create_admin');
     }
-  
+    public function test_sms(Request $request)
+    {
+    $user='';
+     Notification::send(User::where('id',1)->first(), new NewUser($user));
+
+    }
 
     /**
      * Create a new user instance after a valid registration.

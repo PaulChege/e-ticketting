@@ -17,18 +17,21 @@ class UsersTableSeeder extends Seeder
             'email' => 'pchegenjenga@gmail.com',
             'role'=>'admin',
             'password' => bcrypt('123456'),
+            'phone_number'=> '254715987334'
         ]);
          DB::table('users')->insert([
             'name' => 'John Doe',
             'email' => 'john@email.com',
             'role'=>'customer',
             'password' => bcrypt('123456'),
+            'phone_number'=> '254715987334'
         ]);
          DB::table('users')->insert([
             'name' => 'Jane Doe',
             'email' => 'jane@email.com',
             'role'=>'merchant',
             'password' => bcrypt('123456'),
+            'phone_number'=> '254715987334'
         ]);
    
 }

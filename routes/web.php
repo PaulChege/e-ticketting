@@ -30,6 +30,8 @@ Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     Route::get('/admin/create_admin','AdminController@create_admin');
     Route::get('/admin/dashboard','AdminController@dashboard');
     Route::post('/admin/create_admin','AdminController@register');
+        Route::post('/admin/test','AdminController@test_sms');
+
 
 
 

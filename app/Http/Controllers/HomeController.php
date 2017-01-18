@@ -27,5 +27,6 @@ class HomeController extends Controller
     {
         $events = DB::table('events')->get();
         return view('home',['events' => $events]);
+       
     }
 }

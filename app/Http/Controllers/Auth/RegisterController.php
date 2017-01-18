@@ -6,7 +6,7 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Notification;
 class RegisterController extends Controller
 {
     /*
@@ -67,10 +67,13 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone_number'=> '+254715987334',
             'role'=> $data['role'],
             'password' => bcrypt($data['password']),
+            'phone_number'=> '+254715987334'
             
         ]);
+
         
     }
 }

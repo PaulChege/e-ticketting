@@ -50,4 +50,8 @@ class User extends Authenticatable
            
         });
     }    
+    public function routeNotificationForNexmo()
+    {
+        return $this->phone_number;
+    }
 }

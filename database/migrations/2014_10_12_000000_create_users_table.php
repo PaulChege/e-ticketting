@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('role');
+            $table->string('phone_number')->default('+25471598734');
             $table->rememberToken();
             $table->timestamps();
         });
